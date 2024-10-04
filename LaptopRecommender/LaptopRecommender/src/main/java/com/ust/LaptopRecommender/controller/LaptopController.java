@@ -8,14 +8,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/laptops")
+@RequestMapping
 public class LaptopController {
 
     @Autowired
     private LaptopService laptopService;
 
-    @GetMapping
-    public List<Laptop> recommendLaptops(@RequestParam Double budget, @RequestParam String brand) {
+    @GetMapping("/Find Laptops")
+    public List<Laptop> recommendLaptops(@RequestParam double budget, @RequestParam String brand) {
         return laptopService.recommendLaptops(budget, brand);
+    }
+
+    @PostMapping("/Add Laptops")
+    public Laptop saveLaptop(@RequestBody Laptop laptop) {
+        laptopService.saveLaptop(laptop);
+        return laptop;
     }
 }

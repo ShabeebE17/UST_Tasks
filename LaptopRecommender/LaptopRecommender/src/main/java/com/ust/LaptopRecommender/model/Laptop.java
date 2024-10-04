@@ -19,5 +19,5 @@ public class Laptop {
 
     private String brand;
     private String model;
-    private Double budget;
+    private double budget;
 }

@@ -1,6 +1,7 @@
 package com.ust.LaptopRecommender.model;
 
 import com.speedment.jpastreamer.field.ComparableField;
+import com.speedment.jpastreamer.field.DoubleField;
 import com.speedment.jpastreamer.field.StringField;
 
 /**
@@ -22,21 +23,21 @@ public final class Laptop$ {
         false
     );
     /**
-     * This Field corresponds to the {@link Laptop} field "budget".
-     */
-    public static final ComparableField<Laptop, Double> budget = ComparableField.create(
-        Laptop.class,
-        "budget",
-        Laptop::getBudget,
-        false
-    );
-    /**
      * This Field corresponds to the {@link Laptop} field "brand".
      */
     public static final StringField<Laptop> brand = StringField.create(
         Laptop.class,
         "brand",
         Laptop::getBrand,
+        false
+    );
+    /**
+     * This Field corresponds to the {@link Laptop} field "budget".
+     */
+    public static final DoubleField<Laptop> budget = DoubleField.create(
+        Laptop.class,
+        "budget",
+        Laptop::getBudget,
         false
     );
     /**
