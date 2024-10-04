@@ -14,12 +14,12 @@ import com.speedment.jpastreamer.field.StringField;
 public final class Laptop$ {
     
     /**
-     * This Field corresponds to the {@link Laptop} field "id".
+     * This Field corresponds to the {@link Laptop} field "model".
      */
-    public static final ComparableField<Laptop, Long> id = ComparableField.create(
+    public static final StringField<Laptop> model = StringField.create(
         Laptop.class,
-        "id",
-        Laptop::getId,
+        "model",
+        Laptop::getModel,
         false
     );
     /**
@@ -32,21 +32,21 @@ public final class Laptop$ {
         false
     );
     /**
+     * This Field corresponds to the {@link Laptop} field "id".
+     */
+    public static final ComparableField<Laptop, Long> id = ComparableField.create(
+        Laptop.class,
+        "id",
+        Laptop::getId,
+        false
+    );
+    /**
      * This Field corresponds to the {@link Laptop} field "budget".
      */
     public static final DoubleField<Laptop> budget = DoubleField.create(
         Laptop.class,
         "budget",
         Laptop::getBudget,
-        false
-    );
-    /**
-     * This Field corresponds to the {@link Laptop} field "model".
-     */
-    public static final StringField<Laptop> model = StringField.create(
-        Laptop.class,
-        "model",
-        Laptop::getModel,
         false
     );
 }

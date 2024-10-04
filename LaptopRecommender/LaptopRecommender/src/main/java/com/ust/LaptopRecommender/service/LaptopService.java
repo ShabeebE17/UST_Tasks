@@ -1,5 +1,6 @@
 package com.ust.LaptopRecommender.service;
 
+import com.ust.LaptopRecommender.Exception.LaptopNotFoundException;
 import com.speedment.jpastreamer.application.JPAStreamer;
 import com.ust.LaptopRecommender.model.Laptop;
 import com.ust.LaptopRecommender.repo.LaptopRepository;
@@ -16,11 +17,17 @@ public class LaptopService {
     @Autowired
     private JPAStreamer jpaStreamer;
 
-    public List<Laptop> recommendLaptops(double budget, String brand) {
-        return jpaStreamer.stream(Laptop.class)
-                .filter(laptop -> laptop.getBudget() <= budget)
+    public List<Laptop> recommendLaptops(double budget, String brand) throws LaptopNotFoundException {
+            List<Laptop> laptops=  jpaStreamer.stream(Laptop.class)
+                    .filter(laptop -> laptop.getBudget() <= budget)
                 .filter(laptop -> laptop.getBrand().equalsIgnoreCase(brand))
                 .toList();
+
+        if (laptops.isEmpty()) {
+            throw new LaptopNotFoundException("No laptops found within the specified budget and brand.");
+        }
+
+        return laptops;
     }
 
     public Laptop saveLaptop(Laptop laptop) {
